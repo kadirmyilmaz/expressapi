@@ -19,7 +19,7 @@ app.use(favicon(join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(json());
 app.use(cookieParser());
-app.use(express.static(join(__dirname, '../public')));
+app.use(express.static(join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
