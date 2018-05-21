@@ -1,17 +1,16 @@
-import express from "express";
-import { join } from "path";
-import favicon from "serve-favicon";
-import logger from "morgan";
-import cookieParser from "cookie-parser";
-import { json } from "body-parser";
-import nodemon from "nodemon";
+import express from 'express';
+import { join } from 'path';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import { json } from 'body-parser';
 
 import index from './routes/index';
-import users from "./routes/users";
+import users from './routes/users';
 
 const app = express();
 
-// view engine 
+// view engine
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -25,14 +24,14 @@ app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

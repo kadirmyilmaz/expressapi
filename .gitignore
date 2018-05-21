@@ -58,4 +58,7 @@ typings/
 .env
 
 # distribution
-dist
+dist/
+
+# vsc
+.vscode/
