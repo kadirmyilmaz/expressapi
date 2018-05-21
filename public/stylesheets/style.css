@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+p {
+  font: 200px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: blue
+}

@@ -5,9 +5,9 @@
  */
 
 import app from '../app';
+import { createServer } from "http";
 import debugModule from 'debug';
 const debug = debugModule('expressapi:server');
-import { createServer } from "http";
 
 /**
  * Get port from environment and store in Express.
