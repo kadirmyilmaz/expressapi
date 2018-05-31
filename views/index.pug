@@ -1,9 +1,17 @@
 html
     head
-        title= title
+        title=title
         link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     body
-        p title
-        button.btn.btn-primary Send
-        button.btn.btn-secondary Cancel
+        div.container
+            div.row
+                div.col-sm
+                    center
+                        | HARNESS EVERY CLICK, PASTE AND NAVIGATE
+                        <br>
+                        input(type='text', name='URL', placeholder="Paste a link to shorten it")
+                        button.btn.btn-primary Shorten
+                        <br>
+                        button.btn.btn-secondary Clear
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
     script(src='/js/bootstrap.min.js')

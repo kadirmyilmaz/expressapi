@@ -1,9 +1,16 @@
-import { Router } from "express";
+import { Router } from 'express';
+import { getShortUrl, redirectUrl } from '../controllers/link';
+
 const router = Router();
 
-/* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { 
+    title: 'Custom URL Shortener' 
+  });
 });
+
+router.get('/redirect/:shortUrl', redirectUrl);
+
+router.post('/', getShortUrl);
 
 export default router;
