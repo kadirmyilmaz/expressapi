@@ -1,14 +1,16 @@
 import { Router } from 'express';
-import linkRoutes from './link';
+import { getShortUrl, redirectUrl } from '../controllers/link';
 
 const router = Router();
 
-// render home page as a health check
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Express' });
+  res.render('index', {
+    title: 'Custom URL Shortener',
+  });
 });
 
-// mount link routes at /link
-router.use('/link', linkRoutes);
+router.post('/', getShortUrl);
+
+router.get('/redirect/:shortUrl', redirectUrl);
 
 export default router;
