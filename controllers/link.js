@@ -11,11 +11,16 @@ export function getShortUrl(req, res) {
   if (validUrl.isUri(originLink)) {
     // Step 3: generate short url
     const shortUrl = shortid.generate();
-    const newUrl = new LinkModel({
+    const newLink = new LinkModel({
       originalLink: originLink,
       shortLink: shortUrl,
     });
     // Step 4: new linkModel in db
+    newLink.save((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
     // Step 5: return shortUrl
     res.json({ shortUrl });
   } else {
