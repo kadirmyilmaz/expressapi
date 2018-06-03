@@ -2,7 +2,7 @@ import express from 'express';
 import { join } from 'path';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
-import { json } from 'body-parser';
+import { json, urlencoded } from 'body-parser';
 import mongoose from 'mongoose';
 import helmet from 'helmet';
 import routes from './routes/index';
@@ -30,6 +30,9 @@ app.use(favicon(join(__dirname, 'public', 'favicon.ico')));
 
 // parse json body and attach to req.body
 app.use(json());
+// parse form data and attach to req.body
+app.use(urlencoded({ extended: true }));
+// set static folder to public
 app.use(express.static(join(__dirname, 'public')));
 
 // mount root route to /api path
