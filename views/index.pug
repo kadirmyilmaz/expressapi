@@ -3,6 +3,7 @@ html
         title=title
         link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     body
+    form.form-insert(method='POST' action='/')
         div.container
             div.row
                 div.col-sm
@@ -13,5 +14,6 @@ html
                         button.btn.btn-primary Shorten
                         <br>
                         button.btn.btn-secondary Clear
+        
     script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
     script(src='/js/bootstrap.min.js')

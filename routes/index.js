@@ -9,8 +9,8 @@ router.get('/', function (req, res, next) {
   });
 });
 
-router.get('/redirect/:shortUrl', redirectUrl);
-
 router.post('/', getShortUrl);
+
+router.get('/redirect/:shortUrl', redirectUrl);
 
 export default router;
