@@ -5,12 +5,11 @@ import logger from 'morgan';
 import { json, urlencoded } from 'body-parser';
 import mongoose from 'mongoose';
 import helmet from 'helmet';
-import routes from './routes/index';
-import mongoURI from './config/mongo';
+import routes from './src/routes/index';
+import mongoURI from './src/config/mongo';
 
 // connect to mongodb
 mongoose.connect(mongoURI);
-
 
 const app = express();
 
@@ -22,18 +21,18 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // set view location and engine
-app.set('views', './views');
+app.set('views', './src/views');
 app.set('view engine', 'pug');
 
 // set favicon
-app.use(favicon(join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(join(__dirname, './src/public', 'favicon.ico')));
 
 // parse json body and attach to req.body
 app.use(json());
 // parse form data and attach to req.body
 app.use(urlencoded({ extended: true }));
 // set static folder to public
-app.use(express.static(join(__dirname, 'public')));
+app.use(express.static(join(__dirname, './src/public')));
 
 // mount root route to /api path
 app.use('/api', routes);
@@ -56,5 +55,5 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.render('error');
 });
-// ?
+
 export default app;

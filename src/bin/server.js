@@ -1,7 +1,7 @@
 import { createServer } from 'http';
 import debugModule from 'debug';
 import dotenv from 'dotenv';
-import app from '../app';
+import app from '../../app';
 
 // will load vars in .env into PROCESS.ENV
 dotenv.config();
