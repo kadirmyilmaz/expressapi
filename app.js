@@ -5,11 +5,16 @@ import logger from 'morgan';
 import { json, urlencoded } from 'body-parser';
 import mongoose from 'mongoose';
 import helmet from 'helmet';
+import dotenv from 'dotenv';
 import routes from './src/routes/index';
-import mongoURI from './src/config/mongo';
+
+// will load vars in .env into PROCESS.ENV
+dotenv.config();
 
 // connect to mongodb
-mongoose.connect(mongoURI);
+mongoose.connect(process.env.MONGO_HOST).catch((reason) => {
+  console.log('Unable to connect to the mongodb instance. Error: ', reason);
+});
 
 const app = express();
 

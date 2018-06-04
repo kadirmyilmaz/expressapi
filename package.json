@@ -5,13 +5,14 @@
   "author": {
     "name": "Kadir M. Yilmaz"
   },
-  "main": "node ./bin/server",
+  "main": "./bin/server",
   "private": true,
   "scripts": {
-    "debug": "set DEBUG=express:* & nodemon ./src/bin/startup.js --exec babel-node --presets es2015",
-    "start": "nodemon ./src/bin/startup --exec babel-node --presets es2015",
-    "build": "babel src -d dist",
-    "serve": "node dist/startup.js",
+    "debug": "set DEBUG=express:* & nodemon ./server.js --exec babel-node --presets es2015",
+    "start": "node server",
+    "nodemon": "nodemon ./server --exec babel-node --presets es2015",
+    "build": "babel app.js server.js src -d dist",
+    "serve": "node dist/server.js",
     "eslint": "eslint --ignore-path .gitignore ."
   },
   "repository": {

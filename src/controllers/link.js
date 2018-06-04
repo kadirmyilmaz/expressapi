@@ -11,7 +11,7 @@ export function getShortUrl(req, res) {
   if (validUrl.isUri(originLink)) {
     // Step 3: generate short url
     const shortUrl = shortid.generate();
-    const fullShortUrl = `http://localhost:3000/api/redirect/${shortUrl}`;
+    const fullShortUrl = `http://localhost:${process.env.PORT}/api/redirect/${shortUrl}`;
     const newLink = new LinkModel({
       originalLink: originLink,
       shortLink: shortUrl,
