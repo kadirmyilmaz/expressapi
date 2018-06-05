@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 // pluralize bruges til at have modellen i ental form
 mongoose.pluralize(null);
 
-const linkSchema = new mongoose.Schema({
+var linkSchema = new mongoose.Schema({
   originalLink: String,
   shortLink: String,
 });

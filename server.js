@@ -1,14 +1,13 @@
-import { createServer } from 'http';
-import debugModule from 'debug';
-import app from './app';
+var http = require('http');
+var debug = require('debug')('expressapi:server');
+var app = require('./app');
 
-const debug = debugModule('expressapi:server');
 
 /**
  * Normalize a port into a number, string, or false.
  */
 function normalizePort(val) {
-  const port = parseInt(val, 10);
+  var port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -26,13 +25,13 @@ function normalizePort(val) {
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-const server = createServer(app);
+var server = http.createServer(app);
 
 /**
  * Event listener for HTTP server "error" event.
@@ -42,7 +41,7 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === 'string'
+  var bind = typeof port === 'string'
     ? `Pipe ${port}`
     : `Port ${port}`;
 
@@ -65,8 +64,8 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === 'string'
+  var addr = server.address();
+  var bind = typeof addr === 'string'
     ? `pipe ${addr}`
     : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
@@ -75,7 +74,7 @@ function onListening() {
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port, () => {
+server.listen(port, function() {
   debug(`Server started on port ${port}..`);
 });
 server.on('error', onError);

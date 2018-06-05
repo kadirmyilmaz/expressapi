@@ -1,16 +1,11 @@
-import { Router } from 'express';
-import { getShortUrl, redirectUrl } from '../controllers/link';
+var express = require('express');
 
-const router = Router();
+var router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', function (req, res) {
   res.render('index', {
     title: 'Custom URL Shortener',
   });
 });
 
-router.post('/', getShortUrl);
-
-router.get('/redirect/:shortUrl', redirectUrl);
-
-export default router;
+module.exports = router;
