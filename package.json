@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server",
     "nodemon": "nodemon ./server --exec babel-node --presets es2015",
-    "debug": "set DEBUG=express:* & nodemon ./server.js --exec babel-node --presets es2015",
+    "debug": "set DEBUG=expressapi:server & node server.js",
     "build": "babel app.js server.js src -d dist",
     "serve": "node dist/server.js",
     "eslint": "eslint --ignore-path .gitignore ."
