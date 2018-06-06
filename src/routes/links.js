@@ -1,7 +1,9 @@
-var express = require('express');
-var linkCtrl = require('../controllers/link');
+'use strict';
 
-var router = express.Router();
+const express = require('express');
+const linkCtrl = require('../controllers/link');
+
+const router = express.Router();
 
 router.post('/geturl', linkCtrl.getShortUrl);
 

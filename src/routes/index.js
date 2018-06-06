@@ -1,8 +1,10 @@
-var express = require('express');
+'use strict';
 
-var router = express.Router();
+const express = require('express');
 
-router.get('/', function (req, res) {
+const router = express.Router();
+
+router.get('/', (req, res) => {
   res.render('index', {
     title: 'Custom URL Shortener',
   });
