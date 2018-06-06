@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'development') {
 // set view location and engine
 app.set('views', './src/views');
 app.set('view engine', 'pug');
-
+ 
 // set favicon
 app.use(favicon(path.join(__dirname, './src/public', 'favicon.ico')));
 
@@ -46,8 +46,22 @@ app.use(express.static(path.join(__dirname, './src/public')));
 app.use('/', indexRoute);
 // mount /api path to link route
 app.use('/api', linkRoute);
+
+app.get('/redirect/:shortUrl', function(req, res) {
+  const LinkModel = require('./src/models/linkModel');
+  const shortUrl = req.params.shortUrl;
+  LinkModel.findOne({ shortLink: shortUrl }, 'originalLink', (err, link) => {
+    if (err || !link) {
+      // res rednder instead
+      res.status(404).json({ error: true, message: 'Redirect URL not found' });
+      return;
+    }
+    res.redirect(link.originalLink);
+    });
+});
+
 //mount /login path to login route
-app.use('/login', loginRoute);
+// app.use('/login', loginRoute);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

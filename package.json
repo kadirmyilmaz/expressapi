@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "start": "node server",
-    "nodemon": "nodemon ./server --exec babel-node --presets es2015",
+    "nodemon": "nodemon server",
     "debug": "set DEBUG=expressapi:server & node server.js",
     "build": "babel app.js server.js src -d dist",
     "serve": "node dist/server.js",

@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const linkCtrl = require('../controllers/link');
+const linkCtrl = require('../controllers/links');
 
 const router = express.Router();
 

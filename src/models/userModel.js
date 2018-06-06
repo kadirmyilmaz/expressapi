@@ -7,4 +7,4 @@ let userSchema = new mongoose.Schema({
     email: String
 });
 
-module.exports = mongoose.model("userLogin", userSchema);
+module.exports = mongoose.model('userLogin', userSchema);
