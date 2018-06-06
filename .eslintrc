@@ -1,12 +1,12 @@
-// {
-//   "extends": [
-//     "airbnb-base"
-//   ],
-//   "plugins": [
-//     "import"
-//   ],
-//   "rules": {},
-//   "env": {
-//     "node": true
-//   }
-// }
+{
+  "extends": [
+    "airbnb-base"
+  ],
+  "rules": {
+    "prefer-destructuring": "off",
+    "strict": "off"
+  },
+  "env": {
+    "node": true
+  }
+}

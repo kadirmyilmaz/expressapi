@@ -35,9 +35,7 @@
     "debug": "^2.6.9",
     "dotenv": "^5.0.1",
     "express": "~4.15.5",
-    "express-validation": "^1.0.2",
     "helmet": "^3.12.1",
-    "joi": "^13.3.0",
     "mongoose": "^5.1.2",
     "morgan": "~1.9.0",
     "nodemailer": "^4.6.5",
@@ -56,6 +54,6 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "~7.10.0"
+    "node": "10.0.0"
   }
 }
