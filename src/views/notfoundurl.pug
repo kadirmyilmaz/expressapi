@@ -1,4 +1,13 @@
 extends layout
 
 block content
-  pre Could not read the page #{errorUrl}
+  div.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+    main.inner.cover(role='main')
+      h1.cover-heading Could not find the URL: #{errorUrl}
+    footer.mastfoot.mt-auto.inner
+      p
+        | URL EXPRESS 
+        a(href='https://github.com/KadirMYilmaz/expressapi') GitHub
+        | , by 
+        a(href='#') Kadir 😎
+        | .

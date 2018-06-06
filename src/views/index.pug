@@ -14,7 +14,7 @@ html
                         input#longUrl.form-control(type="text", name="URL", placeholder="Paste a link to shorten it", aria-label="Paste a link to shorten it", aria-describedby="basic-addon2")
                         input#redirectType(type="hidden", name="redirectType", value="true")
                         div.input-group-append
-                            button.btn.btn-outline-secondary(type="submit") GO
+                            button.btn.btn-outline-secondary(type="submit") SHORTEN
                             button#clearbtn.btn.btn-outline-secondary(type="button") CLEAR
             footer.mastfoot.mt-auto.inner
                     p
@@ -36,9 +36,14 @@ html
                     url: '/api/geturl',
                     data: $('#apiForm').serialize(),
                     success: function(data) {
+                        console.log(data);
                         if (!data.error) {
                             alert(data.shortUrl);
                         }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                        alert(data.responseJSON.message);
                     }
                 }); 
                 return false;

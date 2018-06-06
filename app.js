@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'development') {
 // set view location and engine
 app.set('views', './src/views');
 app.set('view engine', 'pug');
- 
+
 // set favicon
 app.use(favicon(path.join(__dirname, './src/public', 'favicon.ico')));
 
@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, './src/public')));
 app.use('/', indexRoute);
 // mount /api path to link route
 app.use('/api', linkRoute);
-//mount /login path to login route
+// mount /login path to login route
 // app.use('/login', loginRoute);
 
 // catch 404 and forward to error handler

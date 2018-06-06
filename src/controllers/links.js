@@ -31,6 +31,7 @@ exports.getShortUrl = (req, res) => {
     newLink.save((err) => {
       if (err) {
         res.status(502).json({ error: true, message: 'Operation failed: could not save URL in MongoDB.' });
+        return; // eslint-disable-line
       }
     });
     // Step 5: return shortUrl
@@ -60,11 +61,10 @@ exports.redirect = (req, res) => {
   LinkModel.findOne({ shortLink: shortUrl }, 'originalLink', (err, link) => {
     if (err || !link) {
       res.render('notfoundurl', {
-        error: true, 
-        message: 'Redirect URL not found'
+        errorUrl: shortUrl,
       });
       return;
     }
     res.redirect(link.originalLink);
-    });
+  });
 };

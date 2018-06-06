@@ -10,7 +10,7 @@ const app = require('./app');
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
-  if (isNaN(port)) {
+  if (isNaN(port)) { // eslint-disable-line
     // named pipe
     return val;
   }
