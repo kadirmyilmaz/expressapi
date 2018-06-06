@@ -1,0 +1,18 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css')
+    link(rel='stylesheet', href='../public/css/login.css')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js')
+  body.text-center
+
+      form.form-signin(method='POST' action='/login')
+        h1.h3.mb-3.font-weight-normal Please sign in
+        label.sr-only(for='name') Name:
+        input#name.form-control(type='text', placeholder='username' name='name')
+        label.sr-only(for='pw') Password:
+        input#pw.form-control(type='password' placeholder='password' name='password')
+        button.btn-lg.btn-primary.bt-block(type='submit') Login
+      

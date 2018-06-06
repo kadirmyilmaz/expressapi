@@ -1,19 +1,21 @@
-var validUrl = require('valid-url');
-var shortid = require('shortid');
-var LinkModel = require('../models/linkModel');
+const validUrl = require('valid-url');
+const shortid = require('shortid');
+const linkModel = require('../models/linkModel');
+
+// Jeg har ændret på navnet på LinkModel til linkModel <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
 exports.getShortUrl = function (req, res) {
   // Step 1: få fat i original link, dvs. den brugeren har indtastet
-  var originLink = req.body.URL;
+  let originLink = req.body.URL;
   // Step 2: er det en valid url?
   if (validUrl.isUri(originLink)) {
     // Step 3: generate short url
-    var shortUrl = shortid.generate();
+    let shortUrl = shortid.generate();
     // check that shortid has not been used already in DB
 
-    var fullShortUrl;
+    let fullShortUrl;
     if (process.env.NODE_ENV === 'development') {
       // Short URL for localhost
       fullShortUrl = process.env.APP_URL + process.env.PORT + '/api/redirect/' + shortUrl;
@@ -22,7 +24,7 @@ exports.getShortUrl = function (req, res) {
       fullShortUrl = process.env.APP_URL + '/api/redirect/' + shortUrl;
     }
 
-    var newLink = new LinkModel({
+    let newLink = new linkModel({
       originalLink: originLink,
       shortLink: shortUrl,
     });
@@ -43,9 +45,9 @@ exports.getShortUrl = function (req, res) {
 
 exports.redirectUrl = function (req, res) {
   // Step 1: få fat i short url
-  var shortUrl = req.params.shortUrl;
+  let shortUrl = req.params.shortUrl;
   // Step 2: søg efter short url i db
-  LinkModel.findOne({ shortLink: shortUrl }, 'originalLink', function (err, link) {
+  linkModel.findOne({ shortLink: shortUrl }, 'originalLink', function (err, link) {
     // Step 3: hvis shortUrl ikke findes i db, så vis fejl side
     if (err || !link) {
       res.status(404).json({ error: true, message: 'Redirect URL not found' });

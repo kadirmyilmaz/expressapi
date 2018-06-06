@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 var helmet = require('helmet');
 var dotenv = require('dotenv');
 var indexRoute = require('./src/routes/index');
-var linkRoute = require('./src/routes/links');
+var linkRoute = require('./src/routes/link');
+var loginRoute = require('./src/routes/login');
 
 // will load vars in .env into PROCESS.ENV
 dotenv.config();
@@ -44,6 +45,8 @@ app.use(express.static(path.join(__dirname, './src/public')));
 app.use('/', indexRoute);
 // mount /api path to link route
 app.use('/api', linkRoute);
+//mount /login path to login route
+app.use('/login', loginRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

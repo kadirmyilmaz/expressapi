@@ -40,6 +40,7 @@
     "joi": "^13.3.0",
     "mongoose": "^5.1.2",
     "morgan": "~1.9.0",
+    "nodemailer": "^4.6.5",
     "pug": "^2.0.3",
     "serve-favicon": "~2.4.5",
     "shortid": "^2.2.8",
