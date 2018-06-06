@@ -3,6 +3,7 @@
     "airbnb-base"
   ],
   "rules": {
+    "linebreak-style": "off",
     "prefer-destructuring": "off",
     "strict": "off"
   },

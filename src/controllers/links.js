@@ -60,11 +60,11 @@ exports.redirect = (req, res) => {
   LinkModel.findOne({ shortLink: shortUrl }, 'originalLink', (err, link) => {
     if (err || !link) {
       res.render('notfoundurl', {
-        error: true, 
-        message: 'Redirect URL not found'
+        error: true,
+        message: 'Redirect URL not found',
       });
       return;
     }
     res.redirect(link.originalLink);
-    });
+  });
 };

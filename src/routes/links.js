@@ -9,6 +9,6 @@ router.post('/geturl', linkCtrl.getShortUrl);
 
 router.get('/redirect/:shortUrl', linkCtrl.redirectUrl);
 
-router.get('/r/:shortUrl', linkCtrl.redirect)
+router.get('/r/:shortUrl', linkCtrl.redirect);
 
 module.exports = router;
