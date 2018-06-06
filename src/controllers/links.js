@@ -14,12 +14,13 @@ exports.getShortUrl = (req, res) => {
     // Step 3: generate short url
     const shortUrl = shortid.generate();
     let fullShortUrl;
+    const redirectUrl = req.body.redirectType ? 'r' : 'redirect';
     if (process.env.NODE_ENV === 'development') {
       // Short URL for localhost
-      fullShortUrl = `${process.env.APP_URL + process.env.PORT}/api/redirect/${shortUrl}`;
+      fullShortUrl = `${process.env.APP_URL + process.env.PORT}/api/${redirectUrl}/${shortUrl}`;
     } else {
       // Short URL for Azure
-      fullShortUrl = `${process.env.APP_URL}/api/redirect/${shortUrl}`;
+      fullShortUrl = `${process.env.APP_URL}/api/${redirectUrl}/${shortUrl}`;
     }
 
     const newLink = new LinkModel({
@@ -52,4 +53,18 @@ exports.redirectUrl = (req, res) => {
     // Step 4: ellers så redirect brugeren til original link
     res.status(200).json({ error: false, redirectUrl: link.originalLink });
   });
+};
+
+exports.redirect = (req, res) => {
+  const shortUrl = req.params.shortUrl;
+  LinkModel.findOne({ shortLink: shortUrl }, 'originalLink', (err, link) => {
+    if (err || !link) {
+      res.render('notfoundurl', {
+        error: true, 
+        message: 'Redirect URL not found'
+      });
+      return;
+    }
+    res.redirect(link.originalLink);
+    });
 };

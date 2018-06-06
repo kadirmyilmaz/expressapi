@@ -12,6 +12,7 @@ html
                 form#apiForm.form-insert()
                     div.input-group
                         input#longUrl.form-control(type="text", name="URL", placeholder="Paste a link to shorten it", aria-label="Paste a link to shorten it", aria-describedby="basic-addon2")
+                        input#redirectType(type="hidden", name="redirectType")
                         div.input-group-append
                             button.btn.btn-outline-secondary(type="submit") GO
                             button#clearbtn.btn.btn-outline-secondary(type="button") CLEAR
@@ -33,7 +34,7 @@ html
                 $.ajax({
                     type: 'POST',
                     url: '/api/geturl',
-                    data: $('#longUrl').serialize(),
+                    data: $('#apiForm').serialize(),
                     success: function(data) {
                         if (!data.error) {
                             alert(data.shortUrl);
