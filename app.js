@@ -10,6 +10,8 @@ const helmet = require('helmet');
 const dotenv = require('dotenv');
 const indexRoute = require('./src/routes/index');
 const linkRoute = require('./src/routes/links');
+const loginRoute = require('./src/routes/login');
+const signupRoute = require('./src/routes/signup');
 
 // will load vars in .env into PROCESS.ENV
 dotenv.config();
@@ -47,7 +49,9 @@ app.use('/', indexRoute);
 // mount /api path to link route
 app.use('/api', linkRoute);
 // mount /login path to login route
-// app.use('/login', loginRoute);
+app.use('/login', loginRoute);
+// mount /signup path to signup route
+app.use('/signup', signupRoute);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

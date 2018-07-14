@@ -5,7 +5,10 @@
   "rules": {
     "linebreak-style": "off",
     "prefer-destructuring": "off",
-    "strict": "off"
+    "strict": "off",
+    "no-console": "off",
+    "no-useless-concat": "off",
+    "consistent-return": "off"
   },
   "env": {
     "node": true

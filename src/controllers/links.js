@@ -27,6 +27,7 @@ exports.getShortUrl = (req, res) => {
       originalLink: originLink,
       shortLink: shortUrl,
     });
+
     // Step 4: new linkModel in db
     newLink.save((err) => {
       if (err) {
