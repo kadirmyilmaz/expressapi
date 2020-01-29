@@ -1,1 +1,1 @@
-exports.secret = 'KontrolPanel159870';
+exports.secret = '';
